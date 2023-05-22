@@ -37,12 +37,12 @@ const Navbar = () => {
                     <li><NavLink to="/route" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-800" : ""}>Route & Stations</NavLink></li>
 
                 </ul>
-                <div className={` gap-2 hidden  ${user.email ? "md:flex z-30" : ""}`}>
+                <div className={` gap-2 hidden  ${user?.email ? "md:flex z-30" : ""}`}>
                     <p className="text-lg">{user?.displayName}</p>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} onClick={() => setOpen(!open)} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img src={user?.photoURL ? photoURL : "https://thumbs.dreamstime.com/b/female-avatar-profile-picture-vector-female-avatar-profile-picture-vector-102690279.jpg"} />
+                                <img src={user?.photoURL ? user?.photoURL : "https://thumbs.dreamstime.com/b/female-avatar-profile-picture-vector-female-avatar-profile-picture-vector-102690279.jpg"} />
                             </div>
                         </label>
                         <ul tabIndex={0} className={` ${open ? "mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-black" : 'absolute -top-36'}`}>

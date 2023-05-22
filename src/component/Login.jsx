@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
-import signin from '../../public/signIn.png'
+import signinimg from '../../public/signIn.png'
 
 const Login = () => {
 
@@ -70,7 +70,7 @@ const Login = () => {
                         <p className='text-center font-semibold text-orange-600'> or </p>
 
                         <button className='flex justify-center'  onClick={handleLoginWithGoogle}>
-                            <img className='h-14 w-72' src={signin}/>
+                            <img className='h-14 w-72' src={signinimg}/>
                         </button>
 
                         <p className='my-4 text-center'>New to Dhka Metro <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>
