@@ -37,7 +37,7 @@ const Navbar = () => {
                     <li><NavLink to="/route" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-800" : ""}>Route & Stations</NavLink></li>
 
                 </ul>
-                <div className={` gap-2 hidden  ${user ? "md:flex z-30" : ""}`}>
+                <div className={` gap-2 hidden  ${user.email ? "md:flex z-30" : ""}`}>
                     <p className="text-lg">{user?.displayName}</p>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} onClick={() => setOpen(!open)} className="btn btn-ghost btn-circle avatar">
@@ -47,7 +47,7 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className={` ${open ? "mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-black" : 'absolute -top-36'}`}>
                             <li>
-                                <NavLink to={user?.email.includes('admin') ? '/adminDashboard' : user?.email.includes('emp') ? '/employeeDashboard' : '/userDashboard'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-800" : ""}>Dashboard</NavLink>
+                                <NavLink to={user?.email?.includes('admin') ? '/adminDashboard' : user?.email?.includes('emp') ? '/employeeDashboard' : '/userDashboard'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-800" : ""}>Dashboard</NavLink>
                             </li>
                             {
                                 user ? <li onClick={handleLogOut}><a>Logout</a></li> : ""
@@ -68,7 +68,7 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className={` ${open ? 'text-black menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52' : 'absolute -top-96'}`}>
                             <li>
-                                <NavLink to={user?.email.includes('admin') ? '/adminDashboard' : user?.email.includes('emp') ? '/employeeDashboard' : '/userDashboard'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-800" : ""}>Dashboard</NavLink>
+                                <NavLink to={user?.email?.includes('admin') ? '/adminDashboard' : user?.email?.includes('emp') ? '/employeeDashboard' : '/userDashboard'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-800" : ""}>Dashboard</NavLink>
                             </li>
                             <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-800" : ""}>Home</NavLink></li>
                             <li><HashLink smooth to="/#scroll">Buy Ticket </HashLink></li>

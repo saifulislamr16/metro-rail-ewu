@@ -5,9 +5,20 @@ import signin from '../../public/signIn.png'
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const {signIn, googleProvider, signWithGoogle } =useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+    const handleLoginWithGoogle = () =>{
+        signWithGoogle(googleProvider)
+        .then(result => {
+            console.log(result.user);
+            navigate('/mrt')
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -21,11 +32,13 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 /*navigate(from, {replace : true})*/
-                navigate("/mrt")
+                navigate("/")
                 
             })
             .catch(error => console.log(error));
     }
+    
+
     return (
         <div>
             <div className="hero-content flex-col lg:flex-row mx-auto">
@@ -56,7 +69,7 @@ const Login = () => {
 
                         <p className='text-center font-semibold text-orange-600'> or </p>
 
-                        <button className='flex justify-center'  onClick={() => console.log("Clicked")}>
+                        <button className='flex justify-center'  onClick={handleLoginWithGoogle}>
                             <img className='h-14 w-72' src={signin}/>
                         </button>
 

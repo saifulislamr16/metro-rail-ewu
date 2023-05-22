@@ -9,6 +9,7 @@ import Pass from "../Passs/Pass";
 import EmployeeDashboard from "../Dashboard/EmployeeDashboard/EmployeeDashboard";
 import AdminDashboard from "../Dashboard/AdminDashboard/AdminDashboard";
 import UserDashboard from "../Dashboard/UserDashboard/UserDashboard";
+import App from "../App";
 const routes = createBrowserRouter([
     {
         path: "/",
@@ -51,6 +52,10 @@ const routes = createBrowserRouter([
             {
                 path:"/adminDashboard",
                 element:<AdminDashboard></AdminDashboard>
+            },
+            {
+                path:"/app",
+                element:<App></App>
             }
         ]
     },

@@ -1,6 +1,6 @@
 
 import Marquee from "react-fast-marquee";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import gmail from "../../public/gmail.png"
 import info from "../../public/info.png"
 import Ticket from "../../public/ticket.png"
@@ -8,8 +8,8 @@ import news from "../../public/megaphone.png"
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import './Home.css'
 import Navbar from "../Navbar/Navbar";
-import { useNavigate } from "react-router-dom";
-const Home = () => {
+import { useLocation, useNavigate } from "react-router-dom";
+const Home = ({child}) => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         // Simulate an asynchronous task
@@ -146,14 +146,12 @@ const Home = () => {
             }
         }
     }
-
+    const location = useLocation();
     const handleSignUp = event => {
         event.preventDefault();
         const form = event.target;
         const from = form.from.value;
         const to = form.to.value;
-        const phone = form.phone.value;
-        console.log(event)
         // Perform form validation
         let errors = {};
         if (from === "Select Station") {
@@ -174,17 +172,24 @@ const Home = () => {
             info.from = from;
             info.to = to;
             info.fair = fair;
-            setTicket(info);
+            info.date = dateM;
+            info.time = time;
+            navigate(`/app`, { state : info} );
+            // send();
         }
 
     };
 
-    useEffect(() => {
-        fetch('data.json')
-            .then(res => res.json())
-            .then(data => setData(data));
-    }, [])
+    const send = () =>{
+        console.log(ticket)
+        
+    }
 
+    useEffect(() => {
+        if(ticket !== null){
+           // navigate(`/app`, { state : ticket} );
+        }
+    }, [ticket])
 
     const [selectedOption, setSelectedOption] = useState('');
     const calculateDirections = () => {
@@ -493,7 +498,6 @@ const Home = () => {
                     </GoogleMap>
                 </LoadScript>
             </div> */}
-
         </div>
     );
 
