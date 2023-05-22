@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import infoimg from "../../public/info.png"
 import card from "../../public/card.png"
 import Navbar from "../Navbar/Navbar";
@@ -18,7 +18,6 @@ const MRT = () => {
         const des= form.des.value;
         const phone= form.phone.value;
         const email= form.email.value;
-        console.log(event)
         // Perform form validation
         let errors = {};
         if(name === ''){
@@ -49,20 +48,23 @@ const MRT = () => {
         }
         else {
             setError({});
-            const info = {};
-            info.name = name;
-            info.dob = dob;
-            info.gender = gender;
-            info.id = id;
-            info.no = no;
-            info.phone = phone;
-            info.email = email;
-            info.des = des;
-            info.address = address;
-            setInfo(info);
+            const formdata = {};
+            formdata.name = name;
+            formdata.dob = dob;
+            formdata.gender = gender;
+            formdata.id = id;
+            formdata.no = no;
+            formdata.phone = phone;
+            formdata.email = email;
+            formdata.des = des;
+            formdata.address = address;
+            setInfo(formdata);
+            
         }
 
+
     };
+    useEffect(()=>{console.log(info);}, [info])
     return (
         <div>
             <Navbar></Navbar>

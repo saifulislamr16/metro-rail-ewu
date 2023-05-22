@@ -6,6 +6,9 @@ import MapWithForm from "../MapWithForm/MapWithForm";
 import Login from "../component/Login";
 import SignUp from "../component/SignUp";
 import Pass from "../Passs/Pass";
+import EmployeeDashboard from "../Dashboard/EmployeeDashboard/EmployeeDashboard";
+import AdminDashboard from "../Dashboard/AdminDashboard/AdminDashboard";
+import UserDashboard from "../Dashboard/UserDashboard/UserDashboard";
 const routes = createBrowserRouter([
     {
         path: "/",
@@ -34,6 +37,20 @@ const routes = createBrowserRouter([
             {
                 path:"/pass",
                 element:<Pass></Pass>
+            },
+            {
+                path:"/employeeDashboard",
+                element:<EmployeeDashboard></EmployeeDashboard>
+            }
+            ,
+            {
+                path:"/userDashboard",
+                element:<UserDashboard></UserDashboard>
+            }
+            ,
+            {
+                path:"/adminDashboard",
+                element:<AdminDashboard></AdminDashboard>
             }
         ]
     },

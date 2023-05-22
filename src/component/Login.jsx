@@ -21,7 +21,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 /*navigate(from, {replace : true})*/
-                navigate("/")
+                navigate("/mrt")
                 
             })
             .catch(error => console.log(error));
